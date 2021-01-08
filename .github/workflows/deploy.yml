@@ -1,6 +1,6 @@
 name: Publish package on GitHub
 env:
-  IMAGE_TAG: "ghcr.io/standout/integrationer-steps-ruby-runner:${{ GITHUB_REF:10 }}"
+  IMAGE_TAG: "ghcr.io/standout/integrationer-steps-ruby-runner:${{ github.event.release.tag_name }}"
 on:
   release:
     types: [published]

@@ -1,6 +1,6 @@
 name: Publish package on GitHub
 env:
-  IMAGE_TAG: "ghcr.io/standout/integrationer-steps-ruby-runner:${{ GITHUB_REF:10 }}"
+  IMAGE_TAG: "ghcr.io/standout/integrationer-steps-ruby-runner:${{ github.ref }}"
 on:
   release:
     types: [published]
@@ -15,11 +15,10 @@ jobs:
         run: |
           docker pull ghcr.io/standout/integrationer-steps-ruby-runner:latest
           docker build \
-          -t $IMAGE_TAG \
           -t ghcr.io/standout/integrationer-steps-ruby-runner:latest \
           --cache-from=ghcr.io/standout/integrationer-steps-ruby-runner:latest \
           .
       - name: Release docker image
         run: |
-          docker push $IMAGE_TAG
+          echo $IMAGE_TAG
           docker push ghcr.io/standout/integrationer-steps-ruby-runner:latest

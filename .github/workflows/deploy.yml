@@ -1,0 +1,25 @@
+name: Publish package on GitHub
+env:
+  IMAGE_TAG: "ghcr.io/standout/integrationer-steps-ruby-runner:${{ GITHUB_REF:10 }}"
+on:
+  release:
+    types: [published]
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - name: Login to docker repository
+        run: echo ${{ secrets.GH_PACKAGES_TOKEN }} | docker login ghcr.io -u ${{ github.actor }} --password-stdin
+      - name: Build docker image
+        run: |
+          docker pull ghcr.io/standout/integrationer-steps-ruby-runner:latest
+          docker build \
+          -t $IMAGE_TAG \
+          -t ghcr.io/standout/integrationer-steps-ruby-runner:latest \
+          --cache-from=ghcr.io/standout/integrationer-steps-ruby-runner:latest \
+          .
+      - name: Release docker image
+        run: |
+          docker push $IMAGE_TAG
+          docker push ghcr.io/standout/integrationer-steps-ruby-runner:latest

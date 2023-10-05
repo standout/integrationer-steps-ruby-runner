@@ -1,0 +1,4 @@
+---
+gem: --no-document --without development
+install: --no-document
+update: --no-document

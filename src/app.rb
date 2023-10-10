@@ -79,6 +79,6 @@ class Handler
   def self.parse_data(data)
     JSON.parse(data)
   rescue JSON::ParserError
-    data
+    data.respond_to?(:strip) ? data.strip : data
   end
 end

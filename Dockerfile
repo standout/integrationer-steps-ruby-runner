@@ -26,7 +26,7 @@ COPY config/gemrc /usr/local/etc/gemrc
 
 COPY src/ /home/runner/
 
-RUN gem update --system && gem install activesupport faraday faraday-retry money nokogiri pry-byebug rexml --no-doc
+RUN gem update --system 3.4.22 && gem install activesupport 'faraday:2.8.1' faraday-retry money 'nokogiri:1.15.6' pry-byebug rexml --no-doc
 
 ENV HOME=/tmp/app-tmp
 ENV TMPDIR=/tmp/app-tmp

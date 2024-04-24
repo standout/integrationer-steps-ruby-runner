@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require 'json'
+require 'base64'
 
 class NotifyOrganizationError < StandardError; end
 class NotifyOrganizationRetryableError < StandardError; end
@@ -17,6 +18,23 @@ rescue JSON::ParserError
   RUNNER_INPUT = {}.freeze
 end
 
-RUNNER_CODE = RUNNER_INPUT.fetch('code', nil) || JSON.parse(ENV.fetch('RUNNER_CODE', '{}'))
-FIELDS = RUNNER_INPUT.fetch('fields', nil) || JSON.parse(ENV.fetch('RUNNER_FIELDS', '{}'))
-ACCOUNT = RUNNER_INPUT.fetch('account', nil) || JSON.parse(ENV.fetch('RUNNER_ACCOUNT', '{}'))
+def parse_input(runner_input, environment, key)
+  caps_key = "RUNNER_#{key.upcase}"
+  base64_key = "#{caps_key}_BASE64"
+
+  value = runner_input.fetch(key, nil)
+  return value unless value.nil?
+
+  value = environment.fetch(caps_key, nil)
+  return JSON.parse(value) unless value.nil?
+
+  value = environment.fetch(base64_key, nil)
+  return {} if value.nil?
+
+  decoded_value = Base64.decode64(value)
+  decoded_value.to_s == '' ? {} : JSON.parse(decoded_value)
+end
+
+RUNNER_CODE = parse_input(RUNNER_INPUT, ENV, 'code')
+FIELDS = parse_input(RUNNER_INPUT, ENV, 'fields')
+ACCOUNT = parse_input(RUNNER_INPUT, ENV, 'account')

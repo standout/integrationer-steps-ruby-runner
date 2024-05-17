@@ -2,6 +2,7 @@
 
 require 'json'
 require 'base64'
+require 'ostruct'
 
 class NotifyOrganizationError < StandardError; end
 class NotifyOrganizationRetryableError < StandardError; end

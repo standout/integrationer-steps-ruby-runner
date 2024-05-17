@@ -1,4 +1,4 @@
-FROM ruby:2.7-alpine
+FROM ruby:2.7.8-alpine
 
 MAINTAINER devops@standout.se
 

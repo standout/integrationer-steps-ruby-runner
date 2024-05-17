@@ -26,19 +26,25 @@ COPY config/gemrc /usr/local/etc/gemrc
 
 COPY src/ /home/runner/
 
-RUN gem update --system 3.4.22 && gem install \
-  activesupport \
-  base64 \
-  csv \
-  down \
+RUN MAKE="make -j$(nproc)" gem update --system 3.4.22 && gem install \
+  'activesupport:6.1.7.7' \
+  'activesupport:7.1.3.3' \
+  'base64:0.2.0' \
+  'crack:1.0.0' \
+  'csv:3.3.0' \
+  'date:3.3.4' \
+  'down:5.4.2' \
+  'faraday-retry:2.2.1' \
   'faraday:2.8.1' \
-  faraday-retry \
-  money \
+  'json:2.7.2' \
+  'money:6.19.0' \
   'nokogiri:1.15.6' \
-  pdf-reader \
+  'httparty:0.22.0' \
+  'pdf-reader:2.12.0' \
+  'rexml:3.2.8' \
+  'roo:2.10.1' \
+  moss_generator \
   pry-byebug \
-  rexml \
-  roo \
   --no-doc
 
 ENV HOME=/tmp/app-tmp

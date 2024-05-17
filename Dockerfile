@@ -30,6 +30,7 @@ RUN MAKE="make -j$(nproc)" gem update --system 3.4.22 && gem install \
   'activesupport:6.1.7.7' \
   'activesupport:7.1.3.3' \
   'base64:0.2.0' \
+  'builder:3.2.4' \
   'crack:1.0.0' \
   'csv:3.3.0' \
   'date:3.3.4' \

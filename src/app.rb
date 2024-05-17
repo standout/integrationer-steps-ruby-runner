@@ -3,7 +3,6 @@
 require 'json'
 require 'open3'
 require 'stringio'
-require 'ostruct'
 
 # RubyEvaluator
 class RubyEvaluator

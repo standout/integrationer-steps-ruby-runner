@@ -35,8 +35,8 @@ RUN gem install \
   'csv:3.3.0' \
   'date:3.3.4' \
   'down:5.4.2' \
-  'faraday-retry:2.2.1' \
   'faraday:2.8.1' \
+  'faraday-retry:2.2.1' \
   'json:2.7.2' \
   'money:6.19.0' \
   'nokogiri:1.15.6' \

@@ -39,12 +39,11 @@ RUN gem install \
   'json:2.7.2' \
   'money:6.19.0' \
   'nokogiri:1.15.6' \
-  'httparty:0.22.0' \
   'pdf-reader:2.12.0' \
   'rexml:3.2.8' \
   'roo:2.10.1' \
-  moss_generator \
-  pry-byebug \
+  'moss_generator' \
+  'pry-byebug' \
   --no-doc
 
 ENV HOME=/tmp/app-tmp

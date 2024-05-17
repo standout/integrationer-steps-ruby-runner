@@ -26,7 +26,7 @@ COPY config/gemrc /usr/local/etc/gemrc
 
 COPY src/ /home/runner/
 
-RUN MAKE="make -j$(nproc)" gem update --system 3.4.22 && gem install \
+RUN gem install \
   'activesupport:6.1.7.7' \
   'activesupport:7.1.3.3' \
   'base64:0.2.0' \

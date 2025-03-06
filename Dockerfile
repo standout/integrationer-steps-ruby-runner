@@ -35,14 +35,18 @@ RUN gem install \
   'csv:3.3.0' \
   'date:3.3.4' \
   'down:5.4.2' \
-  'faraday:2.8.1' \
+  'groupdate:6.2.1' \
   'faraday-retry:2.2.1' \
+  'faraday:2.8.1' \
   'json:2.7.2' \
   'money:6.19.0' \
   'nokogiri:1.15.6' \
+  'httparty:0.22.0' \
   'pdf-reader:2.12.0' \
   'rexml:3.2.8' \
+  'ruby-openai:7.3.1' \
   'roo:2.10.1' \
+  'google-cloud-bigquery:1.51.1' \
   'moss_generator' \
   'pry-byebug' \
   --no-doc
